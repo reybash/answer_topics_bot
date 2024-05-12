@@ -64,15 +64,15 @@ def generate_word_document(user_info, answers_data, topic_name):
             f"Telegram username: {user_info['username']}")
 
     # Add a heading for answers
-    doc.add_heading("Ответы на вопросы", level=2)
+    doc.add_heading("Answers on questions", level=2)
 
     # Loop through questions and answers and add them to the document
     for question, answer in answers_data.items():
         p_question = doc.add_paragraph()
-        run_question = p_question.add_run(f"Вопрос: {question}")
+        run_question = p_question.add_run(f"Question: {question}")
         run_question.bold = True
 
-        doc.add_paragraph(f"Ответ: {answer}")
+        doc.add_paragraph(f"Answer: {answer}")
         doc.add_paragraph()  # Add an empty paragraph between questions
 
     doc.save(word_file)
