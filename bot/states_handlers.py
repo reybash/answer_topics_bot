@@ -19,14 +19,13 @@ router = Router()
 
 @router.message(Form.username)
 async def form_nickname(message: Message, state: FSMContext):
-    # Обработать полное имя пользователя и подготовиться к заданию вопросов
     data = await state.get_data()
 
     first_last_name = message.text
     user_questions_iter = iter(data.get(USER_QUESTIONS, None))
 
-    msg_start = await message.answer(f"Спасибо, {first_last_name}. Скоро "
-                                     f"будут задаваться вопросы. Удачи!")
+    msg_start = await message.answer(f"Thank you, {first_last_name}. Soon "
+                                     f"questions will be asked. Good luck!")
 
     state_data = {
         FIRST_LAST_NAME: first_last_name,
@@ -45,9 +44,8 @@ async def form_nickname(message: Message, state: FSMContext):
 
 
 async def wait_for_answer(message: Message, state: FSMContext, timeout):
-    # Wait for user's answer within a specified time limit
     formatted_time = format_time(timeout)
-    timer_message = await message.answer(f"Осталось времени: {formatted_time}")
+    timer_message = await message.answer(f"Time left: {formatted_time}")
 
     data = await state.get_data()
     msgs_for_delete = data.get(MESSAGES_FOR_DELETE, None)
@@ -56,11 +54,11 @@ async def wait_for_answer(message: Message, state: FSMContext, timeout):
     for seconds_left in range(timeout - TIMER_OFFSET, -1, -TIMER_OFFSET):
         await asyncio.sleep(TIMER_OFFSET)
         formatted_time = format_time(seconds_left)
-        await timer_message.edit_text(f"Осталось времени: {formatted_time}")
+        await timer_message.edit_text(f"Time left: {formatted_time}")
         if seconds_left == TIME_FOR_NOTICE:
             msg_left = await message.answer(
-                "Время истекает... Лучше введите ответ сейчас, "
-                "иначе он не будет засчитан!")
+                "Time is running out... Better enter your answer now, "
+                "otherwise it will not be counted!")
             msgs_for_delete.append(msg_left)
 
     await handle_timeout(message, state, data)
@@ -89,7 +87,6 @@ async def ask_questions(message: Message, state: FSMContext):
     # Ask questions to the user one by one
     data = await state.get_data()
 
-    # Получаем номер следующего вопроса
     question_number = next(data.get(USER_QUESTIONS_ITER), None)
 
     if question_number is not None:
@@ -130,8 +127,8 @@ async def stop_iteration_handle(message: Message, state: FSMContext):
     await cancel_timer(data.get(TIMER))
     await delete_messages(data.get(MESSAGES_FOR_DELETE, None))
 
-    file_name = (f'Ответы от {data_first_last_name} '
-                 f'на тему "{data_topic_name}".docx')
+    file_name = (f'Replies from {data_first_last_name} '
+                 f'on the topic "{data_topic_name}".docx')
     output_file = generate_word_document(user_info, data_answers,
                                          data_topic_name)
     buffered_file = BufferedInputFile(output_file, file_name)
@@ -141,7 +138,7 @@ async def stop_iteration_handle(message: Message, state: FSMContext):
 
     await state.clear()
     await message.answer(
-        "Это был последний вопрос. Спасибо за ваши ответы!")
+        "This was the last question. Thank you for your responses!")
 
 
 async def cancel_timer(timer):
