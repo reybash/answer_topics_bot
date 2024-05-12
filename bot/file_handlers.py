@@ -15,18 +15,18 @@ def input_file(file_name):
         specified pattern, for example:
         1. How do you define system requirements based
         on the most successful ways in your experience?
-        What methods and tools do you use for this? 2 min
+        What methods and tools do you use for this? 2 min 15 sec
         ...
 
         Each question should be numbered and
-        followed by its text and duration in minutes.
+        followed by its text and duration in minutes and/or seconds.
     """
     # Read the content of the file
     questions_data = {}
     with open(file_name, "r", encoding="utf-8") as file:
         text = file.read()
 
-    pattern = re.compile(r'(.*?)–?\s+(\d+)\s*(мин|сек)(\s+(\d+)\s*сек)?',
+    pattern = re.compile(r'(.*?)–?\s+(\d+)\s*(min|sec)(\s+(\d+)\s*sec)?',
                          re.DOTALL | re.UNICODE)
     matches = pattern.finditer(text)
 
@@ -36,8 +36,8 @@ def input_file(file_name):
 
         if time_unit not in TIME_UNITS:
             raise ValueError(
-                "Неверный формат времени. "
-                "Пожалуйста, укажите время в минутах или секундах.")
+                "Invalid time format. "
+                "Please enter time in minutes or seconds.")
 
         duration = int(question_duration) * TIME_UNITS[time_unit]
         if seconds_part:
@@ -55,13 +55,13 @@ def generate_word_document(user_info, answers_data, topic_name):
 
     # Add a heading for the report
     doc.add_heading(
-        f"Ответы на вопросы от {user_info['name']} на тему '{topic_name}'",
+        f"Answers to questions from {user_info['name']} on the topic '{topic_name}'",
         level=1)
 
     # Add user information to the document
     if 'username' in user_info:
         doc.add_paragraph(
-            f"Имя пользователя в телеграмме: {user_info['username']}")
+            f"Telegram username: {user_info['username']}")
 
     # Add a heading for answers
     doc.add_heading("Ответы на вопросы", level=2)
