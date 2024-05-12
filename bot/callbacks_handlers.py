@@ -12,13 +12,13 @@ router = Router()
 
 async def choice_topic(callback_query: CallbackQuery, state: FSMContext,
                        current_topic):
-    await callback_query.answer(text=f'Вьбрана тема: '
+    await callback_query.answer(text=f'Selected topic: '
                                      f'{current_topic.name_topic}')
     await callback_query.message.answer(
-        "Спасибо. Успейте отправить ответ на вопрос нажатием клавиши "
-        "'ENTER' до истечения времени, в противном случае ответ не "
-        "будет засчитан. Если готовы, то введите свою Фамилию и Имя, "
-        "после короткой паузы начнётся опрос:")
+        "Thank you. Hurry up to send an answer to a question by pressing a key "
+        "'ENTER' before time expires, otherwise no response "
+        "will be counted. If you are ready, enter your First and Last Name "
+        "after a short pause the survey will begin:")
 
     questions = input_file(current_topic.file_name)
     await state.update_data({TOPIC_NAME: current_topic.name_topic,
