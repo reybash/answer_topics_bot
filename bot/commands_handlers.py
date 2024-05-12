@@ -12,7 +12,7 @@ router = Router()
 
 @router.message(CommandStart())
 async def start(message: Message, state: FSMContext):
-    await message.answer("Привет! Пожалуйста, выбери нужную тему из списка:",
+    await message.answer("Hello! Please select the desired topic from the list:",
                          reply_markup=build_topics_kb())
     await state.set_state(Form.choice_topic)
 
@@ -26,7 +26,7 @@ async def set_admin(message: Message):
 
         if admin_id not in admin_ids:
             file.write(f"{admin_id}\n")
-            await message.answer("Вы успешно добавлены в рассылку ответов")
+            await message.answer("You have been successfully added to the reply mailing list.")
             return
 
         if admin_id in admin_ids:
@@ -35,6 +35,6 @@ async def set_admin(message: Message):
             file.truncate(0)
             for ids in admin_ids:
                 file.write(f"{ids}\n")
-            await message.answer("Вы успешно удалены из рассылки ответов")
+            await message.answer("You have been successfully removed from the reply mailing list.")
 
 
