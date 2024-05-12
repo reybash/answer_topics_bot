@@ -7,6 +7,7 @@ For start bot:
 ```pip install -r requirements.txt```
 
 Take your telegram token form Bot Father and add to environment or make config.py file.
+
 Change email to yours in consts.py for mailing and add password the same way like telegram token.
 
 Add topics to topics.json and make "questions" directory where will the text files with questions be stored.
