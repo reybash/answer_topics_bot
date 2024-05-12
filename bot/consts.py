@@ -13,8 +13,8 @@ TIME_FOR_NOTICE = 15
 TOPICS_COLUMNS = 3
 
 TIME_UNITS = {
-    'мин': ONE_MINUTE_SECONDS,
-    'сек': 1
+    'min': ONE_MINUTE_SECONDS,
+    'sec': 1
 }
 
 FIRST_LAST_NAME = "first_last_name"
