@@ -1,62 +1,7 @@
 [
   {
-    "name_topic": "Базовый SA",
-    "data_topic": "common_screen_data",
-    "file_name": "common_screen.txt"
-  },
-  {
-    "name_topic": "Скрининг BA",
-    "data_topic": "screen_ba_data",
-    "file_name": "screen_ba.txt"
-  },
-  {
-    "name_topic": "Альфа SA",
-    "data_topic": "screen_alfa_data",
-    "file_name": "screen_alfa.txt"
-  },
-  {
-    "name_topic": "Астон SA",
-    "data_topic": "aston_sa_data",
-    "file_name": "aston_sa.txt"
-  },
-  {
-    "name_topic": "QA ММБ",
-    "data_topic": "qa_mmb_data",
-    "file_name": "qa_mmb.txt"
-  },
-  {
-    "name_topic": "QA Феникс",
-    "data_topic": "qa_pheonix_data",
-    "file_name": "qa_pheonix.txt"
-  },
-  {
-    "name_topic": "AQA Java фуллстек",
-    "data_topic": "aqa_java_full_data",
-    "file_name": "aqa_java_full.txt"
-  },
-  {
-    "name_topic": ".NET",
-    "data_topic": "net_screen_data",
-    "file_name": "net_screen.txt"
-  },
-  {
-    "name_topic": "Android",
-    "data_topic": "android_screen_data",
-    "file_name": "android_screen.txt"
-  },
-  {
-    "name_topic": "IOS",
-    "data_topic": "ios_screen_data",
-    "file_name": "ios_screen.txt"
-  },
-  {
-    "name_topic": "Java",
-    "data_topic": "java_screen_data",
-    "file_name": "java_screen.txt"
-  },
-  {
-    "name_topic": "React",
-    "data_topic": "react_screen_data",
-    "file_name": "react_screen.txt"
+    "name_topic": "",
+    "data_topic": "",
+    "file_name": ""
   }
 ]
