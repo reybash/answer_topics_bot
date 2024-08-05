@@ -18,5 +18,5 @@ File example:
    What methods and tools do you use for this? 2 min
 2. ... 1 min 30 sec
 
-Add "emails" directory with emails.txt where mailы will be stored for distribution.
+Add "emails" directory with emails.txt where mails will be stored for distribution.
 For add admnins to send questions enter command: /admin
