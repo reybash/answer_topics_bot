@@ -68,7 +68,7 @@ async def handle_timeout(message: Message, state: FSMContext, data):
     question_text = data.get(CURRENT_QUESTION, None)
     data[USER_ANSWERS][question_text] = ""
 
-    msg_over = await message.answer("Время на ответ вышло.")
+    msg_over = await message.answer("Time to respond has expired")
     await asyncio.sleep(WAITING_TIME)
 
     data[MESSAGES_FOR_DELETE].extend(
